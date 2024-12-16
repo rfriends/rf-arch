@@ -15,23 +15,12 @@ echo rfriends Setup Utility Ver. 1.0
 echo
 echo "これは Arch Linux 用です"
 echo
-echo "RPM Fusion リポジトリを追加しますか　(y/n) ?"
-read ans
-if [ "$ans" = "y" ]; then
-    #
-fi
 # -----------------------------------------
 # ツールのインストール
 # -----------------------------------------
-
 #sudo timedatectl set-timezone Asia/Tokyo
-
-echo
-echo "pacman update します"
-echo
-
 # update
-sudo pacman -Syy
+sudo pacman -Syu
 
 echo
 echo php, ffmpeg, at, AtomicParsley
@@ -40,10 +29,8 @@ echo
 echo "上記ツールをインストールしますか　(y/n) ?"
 read ans
 if [ "$ans" = "y" ]; then
-
-
 	sudo pacman -S  php php-intl
-    # already included
+	# already included
 	#sudo pacman -S php-cli 
 	#sudo pacman -S php-xml php-zip php-mbstring php-json php-curl
 
@@ -52,7 +39,6 @@ if [ "$ans" = "y" ]; then
 	#sudo pacman -S ffmpeg-devel
  
 	sudo pacman -S at cronie
-  
 	sudo pacman -S atomicparsley
 	sudo pacman -S chromium
  
@@ -66,7 +52,7 @@ if [ "$ans" = "y" ]; then
  	sudo systemctl start atd
  	sudo systemctl start atd cronie
 
-    sudo ln -s /usr/bin/atomicparsley /usr/bin/AtomicParsley
+    	sudo ln -s /usr/bin/atomicparsley /usr/bin/AtomicParsley
 fi
 
 echo
@@ -84,9 +70,9 @@ fi
 #echo cd ~/rfriends3
 #echo sh rfriends3.sh
 # -----------------------------------------
-echo
-echo configure samba
-echo
+#echo
+#echo configure samba
+#echo
 
 #sudo mkdir -p /var/log/samba
 #sudo chown root.adm /var/log/samba
@@ -98,9 +84,9 @@ echo
 #sudo cp -p $dir/smb.conf /etc/samba/smb.conf
 #sudo chown root:root /etc/samba/smb.conf
 # -----------------------------------------
-echo
-echo configure usrdir
-echo
+#echo
+#echo configure usrdir
+#echo
 #mkdir -p $HOME/tmp/
 #sed -e ${userstr} $dir/usrdir.ini.skel > $HOME/rfriends3/config/usrdir.ini
 # -----------------------------------------
@@ -109,7 +95,7 @@ echo
 echo
 echo rfriends3の実行方法
 echo 
-echo rfriends3/rf3server.sh
+echo sh $HOME/rfriends3/rf3server.sh
 echo
 echo 以下が表示されるので、webブラウザでアクセス
 echo

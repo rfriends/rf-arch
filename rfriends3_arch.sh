@@ -15,21 +15,35 @@ echo rfriends Setup Utility Ver. 1.0
 echo
 echo "これは Arch Linux 用です"
 echo
+echo "RPM Fusion リポジトリを追加しますか　(y/n) ?"
+read ans
+if [ "$ans" = "y" ]; then
+    #
+fi
 # -----------------------------------------
 # ツールのインストール
 # -----------------------------------------
+
 #sudo timedatectl set-timezone Asia/Tokyo
 
 echo
 echo "pacman update します"
 echo
-sudo pacman -Syu
+
+# update
+sudo pacman -Syy
 
 echo
 echo php, ffmpeg, at, AtomicParsley
 echo
-	sudo pacman -S php php-intl
-    	# already included
+
+echo "上記ツールをインストールしますか　(y/n) ?"
+read ans
+if [ "$ans" = "y" ]; then
+
+
+	sudo pacman -S  php php-intl
+    # already included
 	#sudo pacman -S php-cli 
 	#sudo pacman -S php-xml php-zip php-mbstring php-json php-curl
 
@@ -38,11 +52,12 @@ echo
 	#sudo pacman -S ffmpeg-devel
  
 	sudo pacman -S at cronie
+  
 	sudo pacman -S atomicparsley
 	sudo pacman -S chromium
  
 	#sudo pacman -S samba
-	#sudo pacman -S lighttpd lighttpd-mod-webdav php-cgi
+	#sudo apt -S lighttpd lighttpd-mod-webdav php-cgi
 	#sudo pacman -S libmp4v2
 	#sudo pacman -S gpac
 	#sudo pacman -S ImageMagick
@@ -51,7 +66,7 @@ echo
  	sudo systemctl start atd
  	sudo systemctl start atd cronie
 
-	sudo ln -s /usr/bin/atomicparsley /usr/bin/AtomicParsley
+    sudo ln -s /usr/bin/atomicparsley /usr/bin/AtomicParsley
 fi
 
 echo
@@ -69,9 +84,9 @@ fi
 #echo cd ~/rfriends3
 #echo sh rfriends3.sh
 # -----------------------------------------
-#echo
-#echo configure samba
-#echo
+echo
+echo configure samba
+echo
 
 #sudo mkdir -p /var/log/samba
 #sudo chown root.adm /var/log/samba
@@ -83,9 +98,9 @@ fi
 #sudo cp -p $dir/smb.conf /etc/samba/smb.conf
 #sudo chown root:root /etc/samba/smb.conf
 # -----------------------------------------
-#echo
-#echo configure usrdir
-#echo
+echo
+echo configure usrdir
+echo
 #mkdir -p $HOME/tmp/
 #sed -e ${userstr} $dir/usrdir.ini.skel > $HOME/rfriends3/config/usrdir.ini
 # -----------------------------------------
@@ -94,7 +109,7 @@ fi
 echo
 echo rfriends3の実行方法
 echo 
-echo sh $HOME/rfriends3/rf3server.sh
+echo rfriends3/rf3server.sh
 echo
 echo 以下が表示されるので、webブラウザでアクセス
 echo

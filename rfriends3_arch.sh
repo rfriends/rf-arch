@@ -11,14 +11,15 @@ HOME=/home/$user
 userstr="s/rfriendsuser/${user}/g"
 # -----------------------------------------
 echo
-echo rfriends Setup Utility Ver. 1.0
+echo rfriends3 Setup Utility Ver. 1.0
 echo
 echo "これは Arch Linux 用です"
 echo
 # -----------------------------------------
 # ツールのインストール
 # -----------------------------------------
-#sudo timedatectl set-timezone Asia/Tokyo
+#sudo ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+
 # update
 sudo pacman -Syu
 
@@ -29,7 +30,7 @@ echo
 echo "上記ツールをインストールしますか　(y/n) ?"
 read ans
 if [ "$ans" = "y" ]; then
-	sudo pacman -S  php php-intl
+	sudo pacman -S php php-intl
 	# already included
 	#sudo pacman -S php-cli 
 	#sudo pacman -S php-xml php-zip php-mbstring php-json php-curl
@@ -43,7 +44,7 @@ if [ "$ans" = "y" ]; then
 	sudo pacman -S chromium
  
 	#sudo pacman -S samba
-	#sudo apt -S lighttpd lighttpd-mod-webdav php-cgi
+	#sudo pacman -S lighttpd lighttpd-mod-webdav php-cgi
 	#sudo pacman -S libmp4v2
 	#sudo pacman -S gpac
 	#sudo pacman -S ImageMagick
@@ -69,26 +70,6 @@ fi
 #echo
 #echo cd ~/rfriends3
 #echo sh rfriends3.sh
-# -----------------------------------------
-#echo
-#echo configure samba
-#echo
-
-#sudo mkdir -p /var/log/samba
-#sudo chown root.adm /var/log/samba
-
-#mkdir -p $HOME/smbdir/usr2/
-
-#sudo cp -p /etc/samba/smb.conf /etc/samba/smb.conf.org
-#sudo sed -e ${userstr} $dir/smb.conf.skel > $dir/smb.conf
-#sudo cp -p $dir/smb.conf /etc/samba/smb.conf
-#sudo chown root:root /etc/samba/smb.conf
-# -----------------------------------------
-#echo
-#echo configure usrdir
-#echo
-#mkdir -p $HOME/tmp/
-#sed -e ${userstr} $dir/usrdir.ini.skel > $HOME/rfriends3/config/usrdir.ini
 # -----------------------------------------
 #  ビルトインサーバ
 #

@@ -28,7 +28,7 @@ sudo pacman -Syu
 echo
 echo php, ffmpeg, at, AtomicParsley
 echo
-	sudo pacman -S  php php-intl
+	sudo pacman -S php php-intl
     	# already included
 	#sudo pacman -S php-cli 
 	#sudo pacman -S php-xml php-zip php-mbstring php-json php-curl
@@ -69,9 +69,9 @@ fi
 #echo cd ~/rfriends3
 #echo sh rfriends3.sh
 # -----------------------------------------
-echo
-echo configure samba
-echo
+#echo
+#echo configure samba
+#echo
 
 #sudo mkdir -p /var/log/samba
 #sudo chown root.adm /var/log/samba
@@ -83,9 +83,9 @@ echo
 #sudo cp -p $dir/smb.conf /etc/samba/smb.conf
 #sudo chown root:root /etc/samba/smb.conf
 # -----------------------------------------
-echo
-echo configure usrdir
-echo
+#echo
+#echo configure usrdir
+#echo
 #mkdir -p $HOME/tmp/
 #sed -e ${userstr} $dir/usrdir.ini.skel > $HOME/rfriends3/config/usrdir.ini
 # -----------------------------------------
@@ -94,7 +94,7 @@ echo
 echo
 echo rfriends3の実行方法
 echo 
-echo rfriends3/rf3server.sh
+echo sh $HOME/rfriends3/rf3server.sh
 echo
 echo 以下が表示されるので、webブラウザでアクセス
 echo

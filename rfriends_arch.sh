@@ -1,6 +1,6 @@
 #!/bin/sh
 # -----------------------------------------
-# Rfriends (radiko radiru˜^‰¹ƒc[ƒ‹)
+# Rfriends (radiko radiruéŒ²éŸ³ãƒ„ãƒ¼ãƒ«)
 # 2024/12/16 new github
 # -----------------------------------------
 SITE=https://github.com/rfriends/rfriends3/releases/latest/download
@@ -13,37 +13,23 @@ userstr="s/rfriendsuser/${user}/g"
 echo
 echo rfriends Setup Utility Ver. 1.0
 echo
-echo "‚±‚ê‚Í Arch Linux —p‚Å‚·"
+echo "ã“ã‚Œã¯ Arch Linux ç”¨ã§ã™"
 echo
-echo "RPM Fusion ƒŠƒ|ƒWƒgƒŠ‚ğ’Ç‰Á‚µ‚Ü‚·‚©@(y/n) ?"
-read ans
-if [ "$ans" = "y" ]; then
-    #
-fi
 # -----------------------------------------
-# ƒc[ƒ‹‚ÌƒCƒ“ƒXƒg[ƒ‹
+# ãƒ„ãƒ¼ãƒ«ã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
 # -----------------------------------------
-
 #sudo timedatectl set-timezone Asia/Tokyo
 
 echo
-echo "pacman update ‚µ‚Ü‚·"
+echo "pacman update ã—ã¾ã™"
 echo
-
-# update
-sudo pacman -Syy
+sudo pacman -Syu
 
 echo
 echo php, ffmpeg, at, AtomicParsley
 echo
-
-echo "ã‹Lƒc[ƒ‹‚ğƒCƒ“ƒXƒg[ƒ‹‚µ‚Ü‚·‚©@(y/n) ?"
-read ans
-if [ "$ans" = "y" ]; then
-
-
 	sudo pacman -S  php php-intl
-    # already included
+    	# already included
 	#sudo pacman -S php-cli 
 	#sudo pacman -S php-xml php-zip php-mbstring php-json php-curl
 
@@ -52,12 +38,11 @@ if [ "$ans" = "y" ]; then
 	#sudo pacman -S ffmpeg-devel
  
 	sudo pacman -S at cronie
-  
 	sudo pacman -S atomicparsley
 	sudo pacman -S chromium
  
 	#sudo pacman -S samba
-	#sudo apt -S lighttpd lighttpd-mod-webdav php-cgi
+	#sudo pacman -S lighttpd lighttpd-mod-webdav php-cgi
 	#sudo pacman -S libmp4v2
 	#sudo pacman -S gpac
 	#sudo pacman -S ImageMagick
@@ -66,11 +51,11 @@ if [ "$ans" = "y" ]; then
  	sudo systemctl start atd
  	sudo systemctl start atd cronie
 
-    sudo ln -s /usr/bin/atomicparsley /usr/bin/AtomicParsley
+	sudo ln -s /usr/bin/atomicparsley /usr/bin/AtomicParsley
 fi
 
 echo
-echo "rfriends3‚ğƒCƒ“ƒXƒg[ƒ‹‚µ‚Ü‚·‚©@(y/n) ?"
+echo "rfriends3ã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã—ã¾ã™ã‹ã€€(y/n) ?"
 read ans
 if [ "$ans" = "y" ]; then
     cd ~/
@@ -79,7 +64,7 @@ if [ "$ans" = "y" ]; then
     unzip -q -o $SCRIPT
 fi
 # -----------------------------------------
-#echo rfriends3‚ÌÀs•û–@
+#echo rfriends3ã®å®Ÿè¡Œæ–¹æ³•
 #echo
 #echo cd ~/rfriends3
 #echo sh rfriends3.sh
@@ -104,20 +89,20 @@ echo
 #mkdir -p $HOME/tmp/
 #sed -e ${userstr} $dir/usrdir.ini.skel > $HOME/rfriends3/config/usrdir.ini
 # -----------------------------------------
-#  ƒrƒ‹ƒgƒCƒ“ƒT[ƒo
+#  ãƒ“ãƒ«ãƒˆã‚¤ãƒ³ã‚µãƒ¼ãƒ
 #
 echo
-echo rfriends3‚ÌÀs•û–@
+echo rfriends3ã®å®Ÿè¡Œæ–¹æ³•
 echo 
 echo rfriends3/rf3server.sh
 echo
-echo ˆÈ‰º‚ª•\¦‚³‚ê‚é‚Ì‚ÅAwebƒuƒ‰ƒEƒU‚ÅƒAƒNƒZƒX
+echo ä»¥ä¸‹ãŒè¡¨ç¤ºã•ã‚Œã‚‹ã®ã§ã€webãƒ–ãƒ©ã‚¦ã‚¶ã§ã‚¢ã‚¯ã‚»ã‚¹
 echo
 echo rfriends3_server start
 echo xxx.xxx.xxx.xxx:8000
 echo
 # -----------------------------------------
-# I—¹
+# çµ‚äº†
 # -----------------------------------------
 echo
 echo finished

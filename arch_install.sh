@@ -87,7 +87,7 @@ EOF
 # -----------------------------------------
 echo samba $optsamba
 if [ $optsamba = "on" ]; then
-sudo pacman -S install samba
+sudo pacman -S samba
 sudo mkdir -p /var/log/samba
 sudo chown root:adm /var/log/samba
 

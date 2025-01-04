@@ -103,14 +103,15 @@ usrdir = "$homedir/smbdir/usr2/"
 tmpdir = "$homedir/tmp/"
 EOF
 
-sudo systemctl enable smb
 sudo systemctl restart smb
+sudo systemctl enable smb
 fi
 # =========================================-
 echo
 echo rfriends3ビルトインサーバの実行方法
 echo 
-echo sh $homedir/rfriends3/rf3server.sh
+echo cd $homedir/rfriends3
+echo sh rf3server.sh
 echo
 echo 以下が表示されるので、webブラウザでアクセス
 echo

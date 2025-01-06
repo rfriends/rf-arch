@@ -42,20 +42,17 @@ echo
 #sudo ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 
 # update
-sudo pacman -g
-sudo pacman -Syyu
+sudo pacman -Sy --noconfirm
+sudo pacman -Syu --noconfirm
 # -----------------------------------------
 # ツールのインストール
 # -----------------------------------------
 
 # already included
-#sudo pacman -S php-cli php-xml php-zip php-mbstring php-json php-curl
+#sudo pacman -S --noconfirm php-cli php-xml php-zip php-mbstring php-json php-curl
  
-sudo pacman -S php php-intl unzip wget ffmpeg at cronie atomicparsley chromium
-#sudo pacman -S ffmpeg-devel
- 
-#sudo pacman -S samba
-#sudo pacman -S lighttpd lighttpd-mod-webdav php-cgi
+sudo pacman -S --noconfirm php php-intl unzip wget ffmpeg at cronie atomicparsley chromium
+#sudo pacman -S --noconfirm ffmpeg-devel
 
 sudo systemctl start atd
 sudo systemctl start cronie
@@ -90,11 +87,11 @@ EOF
 # -----------------------------------------
 echo samba $optsamba
 if [ $optsamba = "on" ]; then
-sudo pacman -S samba
+sudo pacman -S --noconfirm samba
 sudo mkdir -p /var/log/samba
 sudo chown root:adm /var/log/samba
 
-sudo cp -p /etc/samba/smb.conf /etc/samba/smb.conf.org
+#sudo cp -p /etc/samba/smb.conf /etc/samba/smb.conf.org
 sed -e s%rfriendshomedir%$homedir%g $dir/smb.conf.skel > $dir/smb.conf
 sed -i s%rfriendsuser%$user%g $dir/smb.conf
 sudo cp -p $dir/smb.conf /etc/samba/smb.conf
@@ -119,12 +116,12 @@ if [ $optlighttpd = "on" ]; then
 conf_dir=/etc/lighttpd
 #
 cd $dir
-sudo pacman -S lighttpd php-cgi
+sudo pacman -S --noconfirm lighttpd php-cgi
 mkdir -p $homedir/lighttpd
 echo lighttpd > $homedir/rfriends3/rfriends3_boot.txt
 #
 # lighttpd
-sudo cp -p $conf_dir/lighttpd.conf $conf_dir/lighttpd.conf.org
+#sudo cp -p $conf_dir/lighttpd.conf $conf_dir/lighttpd.conf.org
 sed -e s%rfriendshomedir%$homedir%g lighttpd.conf.skel > lighttpd.conf
 sed -i s%rfriendsuser%$user%g lighttpd.conf
 sudo cp -p lighttpd.conf $conf_dir/lighttpd.conf
@@ -143,12 +140,8 @@ ln -nfs temp webdav
 #
 fi
 #
-if [ $sys -eq 1 ]; then
-  sudo systemctl enable lighttpd
-  sudo systemctl restart lighttpd
-else 
-  sudo service lighttpd restart
-fi
+sudo systemctl enable lighttpd
+sudo systemctl restart lighttpd
 # =========================================-
 #echo
 #echo rfriends3ビルトインサーバの実行方法

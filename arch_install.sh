@@ -143,17 +143,9 @@ fi
 sudo systemctl enable lighttpd
 sudo systemctl restart lighttpd
 # =========================================-
-#echo
 #echo rfriends3ビルトインサーバの実行方法
-#echo 
 #echo cd $homedir/rfriends3
 #echo sh rf3server.sh
-#echo
-#echo 以下が表示されるので、webブラウザでアクセス
-#echo
-#echo rfriends3_server start
-#echo xxx.xxx.xxx.xxx:8000
-#echo
 # =========================================
 echo
 echo finished arch_install

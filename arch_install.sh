@@ -109,18 +109,62 @@ EOF
 sudo systemctl restart smb
 sudo systemctl enable smb
 fi
+# -----------------------------------------
+echo
+echo install lighttpd
+echo
+# -----------------------------------------
+echo lighttpd $optlighttpd
+if [ $optlighttpd = "on" ]; then
+sudo $dnf -y install lighttpd lighttpd-fastcgi php-cgi
+cd $dir
+#
+# lighttpd
+sudo cp -p /etc/lighttpd/lighttpd.conf /etc/lighttpd/lighttpd.conf.org
+sed -e s%rfriendshomedir%$homedir%g lighttpd.conf.skel > lighttpd.conf
+sed -i s%rfriendsuser%$user%g lighttpd.conf
+sudo cp -p lighttpd.conf /etc/lighttpd/lighttpd.conf
+sudo chown root:root /etc/lighttpd/lighttpd.conf
+#
+# modules
+sudo cp -p /etc/lighttpd/modules.conf /etc/lighttpd/modules.conf.org
+sudo cp -p modules.conf.skel /etc/lighttpd/modules.conf
+sudo chown root:root /etc/lighttpd/modules.conf
+#
+# fastcgi
+sudo cp -p /etc/lighttpd/conf.d/fastcgi.conf /etc/lighttpd/conf.d/fastcgi.conf.org
+sudo cp -p fastcgi.conf.skel /etc/lighttpd/conf.d/fastcgi.conf
+sudo chown root:root /etc/lighttpd/conf.d/fastcgi.conf
+#
+# webdav
+sudo cp -p /etc/lighttpd/conf.d/webdav.conf /etc/lighttpd/conf.d/webdav.conf.org
+sudo cp -p webdav.conf.skel /etc/lighttpd/conf.d/webdav.conf
+sudo chown root:root /etc/lighttpd/conf.d/webdav.conf
+cd $homedir/rfriends3/script/html
+ln -nfs temp webdav
+#
+fi
+#
+mkdir -p $homedir/lighttpd
+echo lighttpd > $homedir/rfriends3/rfriends3_boot.txt
+if [ $sys -eq 1 ]; then
+  sudo systemctl enable lighttpd
+  sudo systemctl restart lighttpd
+else 
+  sudo service lighttpd restart
+fi
 # =========================================-
-echo
-echo rfriends3ビルトインサーバの実行方法
-echo 
-echo cd $homedir/rfriends3
-echo sh rf3server.sh
-echo
-echo 以下が表示されるので、webブラウザでアクセス
-echo
-echo rfriends3_server start
-echo xxx.xxx.xxx.xxx:8000
-echo
+#echo
+#echo rfriends3ビルトインサーバの実行方法
+#echo 
+#echo cd $homedir/rfriends3
+#echo sh rf3server.sh
+#echo
+#echo 以下が表示されるので、webブラウザでアクセス
+#echo
+#echo rfriends3_server start
+#echo xxx.xxx.xxx.xxx:8000
+#echo
 # =========================================
 echo
 echo finished arch_install

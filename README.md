@@ -1,5 +1,4 @@
 rfriends_archはarch linux環境でrfriends3を動作させるスクリプトです。  
-現在は、samba,lighttpdはインストールされません。  
   
 cd ~/  
 sudo pacman -S git  
